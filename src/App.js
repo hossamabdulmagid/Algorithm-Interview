@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 
@@ -8,7 +7,7 @@ const App = () => {
 
   const findMissingNumber = anArray => {
     for (let i = 0; i < anArray.length - 1; i++) {
-      if (anArray[i] + 1 != anArray[i + 1]) {
+      if (anArray[i] + 1 !== anArray[i + 1]) {
         return anArray[i] + 1;
       }
     }
@@ -16,7 +15,6 @@ const App = () => {
   }
 
   console.log(findMissingNumber(anArray), `findMissingNumber(anArray)`)
-
 
   const [dupes, setDupes] = useState([1, 2, 3, 4, 5, 5, 6, 7, 8]);
 
@@ -32,17 +30,13 @@ const App = () => {
     return false;
   }
 
-
   console.log(findDupes(dupes), `fundDupes(dupes)`)
-
-
 
   const [minMax, setMinMax] = useState([1, 2, 3, 4, 5, 600]);
 
   const findMaxMin = (minMax) => {
     let min = minMax[0];
     let max = minMax[0]
-
 
     for (let i = 0; i < minMax.length; i++) {
       if (anArray[i] > max) {
@@ -58,8 +52,6 @@ const App = () => {
   }
   console.log(findMaxMin(minMax), `findMaxMin(minMax)`)
 
-
-
   const [cumulative, setCumulative] = useState([1, 3, 5, 7]);
 
   const cumulativeSum = list => {
@@ -72,7 +64,6 @@ const App = () => {
 
   console.log(cumulativeSum(cumulative), `cumulativeSum(cumulative)`)
 
-
   const [multiDupes, setMultiDupes] = useState([1, 1, 2, 3, 4, 5, 6, 7, 8, 6, 6, 7, 7, 7, 10, 10]);
 
   const returnMultipleDupes = multiDupes => {
@@ -80,11 +71,8 @@ const App = () => {
     let anArray = [];
 
     for (let i = 0; i < multiDupes.length; i++) {
-
       if (anObject[multiDupes[i]]) {
-
         if (anObject[multiDupes[i]] === 1) {
-
           anArray.push(multiDupes[i]);
         }
         anObject[multiDupes[i]] = anObject[multiDupes[i]] + 1;
@@ -118,16 +106,35 @@ const App = () => {
   console.log(removeDupes(removeDupesIndex), `removeDupes(removeDupesIndex)`)
 
 
+  // Question 7. Find all pairs in an array of integers whose sum is equal to a given number
+  const [sumParis, setSumParis] = useState([1, 5, 6, 1, 0, 1]);
+
+
+  const findSumParis = (sumParis, value) => {
+    let sumsLookup = {};
+    let output = [];
+
+    for (let i = 0; i < sumParis.length; i++) {
+      let targetVal = value - sumParis[i];
+
+      if (sumsLookup[targetVal]) {
+        output.push([sumParis[i], targetVal]);
+      }
+
+      sumsLookup[sumParis[i]] = true;
+    }
+
+    return output;
+  }
+
+
+  console.log(findSumParis(sumParis, 6), `findSumParis(sumParis)`)
+
   return (
     <div className="App">
       <header className="App-header">
         Solutions
-     {/*   <br />
-        {returnDupInNewanArray(u)}
-        <hr />
-        {anObjectject.values(findMinAndMax(minMax))}
-        {anArrayr.map((x) => x)}
-     */} </header>
+      </header>
     </div>
   );
 }
