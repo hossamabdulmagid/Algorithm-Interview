@@ -2,7 +2,7 @@ import './App.css';
 import { useState } from 'react';
 
 const App = () => {
-
+  // Question 1 -Find the missing number in a given integer array of 1 to 100
   const [anArray, setanArray] = useState([1, 2, 3, 4, 5, 6, 7, 9, 9]);
 
   const findMissingNumber = anArray => {
@@ -15,6 +15,10 @@ const App = () => {
   }
 
   console.log(findMissingNumber(anArray), `findMissingNumber(anArray)`)
+
+
+
+  // Question 2. Find a duplicate number in an array of integers
 
   const [dupes, setDupes] = useState([1, 2, 3, 4, 5, 5, 6, 7, 8]);
 
@@ -31,6 +35,7 @@ const App = () => {
   }
 
   console.log(findDupes(dupes), `fundDupes(dupes)`)
+  // Question 3. Find the largest and smallest number in an unsorted array of integers
 
   const [minMax, setMinMax] = useState([1, 2, 3, 4, 5, 600]);
 
@@ -51,6 +56,7 @@ const App = () => {
     }
   }
   console.log(findMaxMin(minMax), `findMaxMin(minMax)`)
+  // Question 4. Return an array showing the cumulative sum at each index of an array of integers
 
   const [cumulative, setCumulative] = useState([1, 3, 5, 7]);
 
@@ -63,6 +69,7 @@ const App = () => {
   }
 
   console.log(cumulativeSum(cumulative), `cumulativeSum(cumulative)`)
+  // Question 5. Find all duplicate numbers in an array with multiple duplicates
 
   const [multiDupes, setMultiDupes] = useState([1, 1, 2, 3, 4, 5, 6, 7, 8, 6, 6, 7, 7, 7, 10, 10]);
 
@@ -105,35 +112,31 @@ const App = () => {
 
   console.log(removeDupes(removeDupesIndex), `removeDupes(removeDupesIndex)`)
 
-
   // Question 7. Find all pairs in an array of integers whose sum is equal to a given number
+
   const [sumParis, setSumParis] = useState([1, 5, 6, 1, 0, 1]);
 
-
   const findSumParis = (sumParis, value) => {
-    let sumsLookup = {};
+    let sumLookUp = {};
     let output = [];
-
     for (let i = 0; i < sumParis.length; i++) {
       let targetVal = value - sumParis[i];
-
-      if (sumsLookup[targetVal]) {
-        output.push([sumParis[i], targetVal]);
+      if (sumLookUp[targetVal]) {
+        output.push([sumParis[i], targetVal])
       }
-
-      sumsLookup[sumParis[i]] = true;
+      sumLookUp[sumParis[i]] = true;
     }
-
     return output;
   }
-
 
   console.log(findSumParis(sumParis, 6), `findSumParis(sumParis)`)
 
   return (
     <div className="App">
       <header className="App-header">
-        Solutions
+        <h3>
+          Solutions
+        </h3>
       </header>
     </div>
   );
