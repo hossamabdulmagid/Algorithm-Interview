@@ -1,6 +1,6 @@
 import './App.css';
 import { useState } from 'react';
-
+import { Like } from './components/like.component'
 const App = () => {
   // Question 1 -Find the missing number in a given integer array of 1 to 100
   const [anArray, setanArray] = useState([1, 2, 3, 4, 5, 6, 7, 9, 9]);
@@ -137,6 +137,9 @@ const App = () => {
         <h3>
           Algorithm Interview Questions and Answers (JS)
         </h3>
+        <div>
+          <Like />
+        </div>
       </header>
     </div>
   )
@@ -207,11 +210,15 @@ let Ax = [1, 2, 3, 4];
 
 
 const CumlativeSum = list => {
+
   let result = [list[0]]
+
   for (let i = 1; i < list.length; i++) {
     result.push(list[i] + result[i - 1])
   }
+
   return result;
+
 }
 
 console.log(CumlativeSum(Ax), `CumlativeSum(Ax)`);
@@ -236,30 +243,42 @@ const returnMultipleDupesArrayz = Axx => {
   }
   return anArray;
 }
-
 console.log(returnMultipleDupesArrayz(Axx), `returnMultipleDupesArrayz(Axx)`)
-
-
 
 let remove = [1, 1, 1, 1, 1, 1];
 
-
 const removeDupes = remove => {
   let result = [];
-
   let prev = remove[0];
-
   result[0] = prev;
 
   for (let i = 0; i < remove.length; i++) {
     if (remove[i] !== prev) {
       result.push(remove[i]);
-    } 
-    else {
-      prev = remove[i]
+    } else {
+      prev = remove[0];
     }
   }
   return result;
 }
 
-console.log(removeDupes(remove), `removeDupes(remove)`)
+console.log(removeDupes(remove), `removeDupes(remove)`);
+
+let arrr = [1, 5, 6, 1, 0, 1];
+const findSumPairs = (arrr, value) => {
+  let sumsLookup = {};
+  let output = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    let targetVal = value - arrr[i];
+
+    if (sumsLookup[targetVal]) {
+      output.push([arrr[i], targetVal]);
+    }
+
+    sumsLookup[arrr[i]] = true;
+  }
+
+  return output;
+}
+console.log(findSumPairs(arr, 6), `findSumPairs(arr, 6)`);
