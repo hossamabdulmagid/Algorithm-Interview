@@ -1,6 +1,7 @@
 import { useState, Fragment } from 'react';
 
 import { Button } from 'react-bootstrap';
+import { AiTwotoneDislike, AiFillLike } from "react-icons/ai";
 
 
 
@@ -35,22 +36,22 @@ export const Like = () => {
     return (
         <Fragment>
             <Button
-                className="btn btn-primary"
+                variant={like ? "primary" : 'outline-primary'}
                 size='sm'
                 onClick={onLikeup}
                 style={{ marginRight: '12px' }}
                 disabled={like ? 'disabled' : ''}
             >
-                {likeCounter} | Like
-                </Button>
+                {likeCounter} | <AiFillLike />
+            </Button>
             <Button
-                className="btn btn-danger"
+                variant={disLike ? 'danger' : 'outline-danger'}
                 size='sm'
                 onClick={onDislikeDown}
                 disabled={disLike ? 'disabled' : ""}
             >
-                {disLikeCounter} | disLike
-                </Button>
+                {disLikeCounter} | <AiTwotoneDislike />
+            </Button>
         </Fragment >
     )
 }
