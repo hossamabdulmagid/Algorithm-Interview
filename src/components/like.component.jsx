@@ -14,44 +14,77 @@ export const Like = () => {
 
     const [disLike, updatedDislike] = useState(false);
 
+    const removeLike = () => {
+        UpdatedLikeCounter(likeCounter - 1);
+        updatedLike(false);
 
-    const onLikeup = () => {
+    }
+
+
+    const addLike = () => {
         UpdatedLikeCounter(likeCounter + 1);
         updatedLike(true);
-        updatedDislike(false);
-        updateDislikeCounter(25);
 
     }
 
+
+
+    const addDislike = () => {
+        updatedDislike(true);
+        updateDislikeCounter(disLikeCounter + 1)
+    }
+
+
+    const removeDislike = () => {
+        updatedDislike(false);
+        updateDislikeCounter(disLikeCounter - 1)
+
+    }
+    const onLikeup = () => {
+        if (like) {
+            removeLike();
+        } else {
+            if (disLike) {
+                addLike();
+                removeDislike()
+            } else {
+                addLike();
+            }
+        }
+    }
 
     const onDislikeDown = () => {
-        updateDislikeCounter(disLikeCounter + 1);
-        updatedDislike(true);
-        updatedLike(false);
-        UpdatedLikeCounter(100);
-
+        if (disLike) {
+            removeDislike();
+        } else {
+            if (like) {
+                removeLike();
+                addDislike();
+            } else {
+                addDislike()
+            }
+        }
     }
-
 
     return (
         <Fragment>
             <Button
-                variant={like ? "primary" : 'outline-primary'}
+                variant={like ? 'outline-success' : "success"}
                 size='sm'
                 onClick={onLikeup}
                 style={{ marginRight: '12px' }}
-                disabled={like ? 'disabled' : ''}
+            //            disabled={like ? 'disabled' : ''}
             >
                 {likeCounter} | <AiFillLike />
             </Button>
             <Button
-                variant={disLike ? 'danger' : 'outline-danger'}
+                variant={disLike ? 'outline-info' : 'info'}
                 size='sm'
                 onClick={onDislikeDown}
-                disabled={disLike ? 'disabled' : ""}
+            //          disabled={disLike ? 'disabled' : ""}
             >
                 {disLikeCounter} | <AiTwotoneDislike />
             </Button>
-        </Fragment >
+        </Fragment>
     )
 }
